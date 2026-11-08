@@ -1,0 +1,828 @@
+/* ==================================================
+   1. CONFIGURACIÓN GENERAL
+================================================== */
+
+/* Variables de diseño: modificando estos valores
+   podemos cambiar la apariencia de toda la web */
+
+:root {
+    --color-principal: #243b53;
+    --color-secundario: #3b82f6;
+    --color-fondo: #ffffff;
+    --color-fondo-alternativo: #f1f5f9;
+    --color-texto: #334155;
+    --color-texto-claro: #64748b;
+    --color-borde: #e2e8f0;
+
+    --ancho-contenedor: 1200px;
+
+    --espacio-seccion: 90px;
+    --radio-tarjetas: 12px;
+}
+
+
+/* Aplicamos box-sizing a todos los elementos */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Comportamiento general de la página */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+
+/* Imágenes adaptables */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* Enlaces */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* Títulos */
+
+h1,
+h2,
+h3 {
+    color: var(--color-principal);
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+
+h3 {
+    font-size: 1.4rem;
+}
+
+
+/* ==================================================
+   2. CONTENEDOR GENERAL
+================================================== */
+
+/* Centra el contenido y limita su anchura */
+
+.contenedor {
+    width: min(
+        var(--ancho-contenedor),
+        calc(100% - 48px)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ==================================================
+   3. CABECERA Y MENÚ
+================================================== */
+
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: var(--color-fondo);
+
+    border-bottom: 1px solid var(--color-borde);
+}
+
+
+.navegacion {
+    min-height: 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+/* Nombre de la empresa */
+
+.logo {
+    color: var(--color-principal);
+
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+/* Enlaces del menú */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+
+.menu a {
+    color: var(--color-texto);
+    font-size: 0.9rem;
+
+    transition: color 0.3s ease;
+}
+
+
+.menu a:hover {
+    color: var(--color-secundario);
+}
+
+
+/* ==================================================
+   4. SECCIÓN 1: HERO
+================================================== */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            120deg,
+            #eaf2ff,
+            #ffffff
+        );
+
+    padding: 100px 0;
+}
+
+
+.hero-contenido {
+    max-width: 900px;
+}
+
+
+.etiqueta {
+    color: var(--color-secundario);
+
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 18px;
+}
+
+
+.hero h1 {
+    max-width: 850px;
+    margin-bottom: 25px;
+}
+
+
+.hero h1 span {
+    color: var(--color-secundario);
+    display: block;
+}
+
+
+.hero-texto {
+    max-width: 650px;
+
+    font-size: 1.15rem;
+    color: var(--color-texto-claro);
+
+    margin-bottom: 35px;
+}
+
+
+/* Botones principales */
+
+.boton {
+    display: inline-block;
+
+    padding: 14px 26px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: var(--color-secundario);
+    color: white;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.boton:hover {
+    background-color: var(--color-principal);
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   5. ESTILOS GENERALES DE LAS SECCIONES
+================================================== */
+
+.seccion {
+    padding-top: var(--espacio-seccion);
+    padding-bottom: var(--espacio-seccion);
+}
+
+
+/* Secciones con fondo alternativo */
+
+.seccion-alternativa {
+    background-color: var(--color-fondo-alternativo);
+}
+
+
+/* Encabezados de las secciones */
+
+.encabezado-seccion {
+    max-width: 750px;
+
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+
+.encabezado-seccion h2 {
+    margin-bottom: 20px;
+}
+
+
+.encabezado-seccion > p:last-child {
+    color: var(--color-texto-claro);
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   6. SECCIÓN 2: SOBRE NOSOTROS
+================================================== */
+
+.dos-columnas {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 50px;
+}
+
+
+.texto-columna {
+    padding: 30px;
+
+    background-color: var(--color-fondo);
+
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjetas);
+}
+
+
+.texto-columna h3 {
+    margin-bottom: 20px;
+}
+
+
+.texto-columna p {
+    color: var(--color-texto-claro);
+}
+
+
+/* ==================================================
+   7. TARJETAS DE CONTENIDO
+================================================== */
+
+/* Rejilla que distribuye las tarjetas */
+
+.rejilla-tarjetas {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+}
+
+
+/* Estilo común para las tarjetas */
+
+.tarjeta {
+    padding: 30px;
+
+    background-color: var(--color-fondo);
+
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjetas);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Efecto al pasar el ratón */
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 30px rgba(36, 59, 83, 0.10);
+}
+
+
+.tarjeta h3 {
+    margin-bottom: 15px;
+}
+
+
+.tarjeta p {
+    color: var(--color-texto-claro);
+}
+
+
+/* Número o icono de los servicios */
+
+.icono {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    background-color: #eaf2ff;
+    color: var(--color-secundario);
+
+    border-radius: 10px;
+
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+
+/* Enlaces de las tarjetas */
+
+.enlace {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: var(--color-secundario);
+    font-weight: 700;
+}
+
+
+.enlace:hover {
+    color: var(--color-principal);
+}
+
+
+/* ==================================================
+   8. SECCIÓN 4: METODOLOGÍA
+================================================== */
+
+.paso {
+    padding: 25px 0;
+
+    border-top: 2px solid var(--color-borde);
+}
+
+
+.numero-paso {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: var(--color-secundario);
+
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+
+.paso h3 {
+    margin-bottom: 15px;
+}
+
+
+.paso p {
+    color: var(--color-texto-claro);
+}
+
+
+/* ==================================================
+   9. SECCIÓN 5: PROYECTOS
+================================================== */
+
+.proyecto {
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.imagen-proyecto {
+    min-height: 220px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    color: white;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+/* Fondos provisionales para los proyectos */
+
+.imagen-uno {
+    background:
+        linear-gradient(135deg, #243b53, #64748b);
+}
+
+
+.imagen-dos {
+    background:
+        linear-gradient(135deg, #3b82f6, #93c5fd);
+}
+
+
+.imagen-tres {
+    background:
+        linear-gradient(135deg, #334155, #94a3b8);
+}
+
+
+/* Texto de cada proyecto */
+
+.proyecto-contenido {
+    padding: 25px;
+}
+
+
+.categoria {
+    color: var(--color-secundario) !important;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+/* ==================================================
+   10. SECCIÓN 6: EQUIPO
+================================================== */
+
+.persona {
+    text-align: center;
+}
+
+
+/* Avatar provisional */
+
+.avatar {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background-color: #eaf2ff;
+    color: var(--color-secundario);
+
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+
+.persona h3 {
+    margin-bottom: 10px;
+}
+
+
+.cargo {
+    color: var(--color-secundario) !important;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   11. SECCIÓN 7: CONTACTO
+================================================== */
+
+.contacto-contenido {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: start;
+}
+
+
+.informacion-contacto {
+    padding: 30px 0;
+}
+
+
+.informacion-contacto h3 {
+    margin-bottom: 25px;
+}
+
+
+.informacion-contacto p {
+    color: var(--color-texto-claro);
+    margin-bottom: 20px;
+}
+
+
+.informacion-contacto a {
+    color: var(--color-secundario);
+}
+
+
+/* Formulario */
+
+.formulario {
+    padding: 35px;
+
+    background-color: var(--color-fondo);
+
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjetas);
+}
+
+
+.campo {
+    margin-bottom: 22px;
+}
+
+
+.campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-principal);
+    font-weight: 700;
+}
+
+
+.campo input,
+.campo textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+
+    background-color: var(--color-fondo);
+
+    color: var(--color-texto);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+
+.campo textarea {
+    resize: vertical;
+}
+
+
+/* Estado de los campos al seleccionarlos */
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: 2px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+
+/* ==================================================
+   12. PIE DE PÁGINA
+================================================== */
+
+.pie-pagina {
+    padding: 30px 0;
+
+    background-color: var(--color-principal);
+    color: white;
+}
+
+
+.pie-contenido {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.pie-contenido p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+.pie-contenido a {
+    font-weight: 700;
+}
+
+
+.pie-contenido a:hover {
+    color: #93c5fd;
+}
+
+
+/* ==================================================
+   13. DISEÑO RESPONSIVE: TABLETAS
+================================================== */
+
+@media (max-width: 1000px) {
+
+    /* Permitimos que el menú ocupe varias líneas */
+
+    .navegacion {
+        flex-direction: column;
+        justify-content: center;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        gap: 12px 20px;
+    }
+
+
+    /* Dos columnas para las tarjetas */
+
+    .rejilla-tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    .hero {
+        min-height: 550px;
+    }
+
+}
+
+
+/* ==================================================
+   14. DISEÑO RESPONSIVE: MÓVILES
+================================================== */
+
+@media (max-width: 600px) {
+
+    /* Reducimos los espacios laterales */
+
+    .contenedor {
+        width: calc(100% - 32px);
+    }
+
+
+    /* Reducimos el espacio entre secciones */
+
+    :root {
+        --espacio-seccion: 60px;
+    }
+
+
+    /* Menú más compacto */
+
+    .menu {
+        gap: 8px 14px;
+    }
+
+
+    .menu a {
+        font-size: 0.8rem;
+    }
+
+
+    /* Portada */
+
+    .hero {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+
+    .hero-texto {
+        font-size: 1rem;
+    }
+
+
+    /* Todas las rejillas pasan a una columna */
+
+    .rejilla-tarjetas,
+    .dos-columnas,
+    .contacto-contenido {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Reducimos el espacio entre columnas */
+
+    .dos-columnas {
+        gap: 20px;
+    }
+
+
+    .contacto-contenido {
+        gap: 25px;
+    }
+
+
+    /* Tarjetas */
+
+    .tarjeta {
+        padding: 25px;
+    }
+
+
+    .proyecto {
+        padding: 0;
+    }
+
+
+    /* Formulario */
+
+    .formulario {
+        padding: 22px;
+    }
+
+
+    /* Pie de página */
+
+    .pie-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
